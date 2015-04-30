@@ -1,0 +1,10 @@
+# Spanish strings go here for Rails i18n
+es:
+  km:
+    label_knowledges: Conocimientos
+    label_add_knowledge: Añadir conocimiento
+    label_knowledge: Conocimiento
+    label_level: Nivel
+    label_knowledge_management: Gestión de conocimientos
+    label_name: Nombre
+    label_main: Principal

@@ -1,0 +1,10 @@
+# English strings go here for Rails i18n
+en:
+  km:
+    label_knowledges: Knowledges
+    label_add_knowledge: Add knowledge
+    label_knowledge: Knowledge
+    label_level: Level
+    label_knowledge_management: Knowledge management
+    label_name: Name
+    label_main: Main

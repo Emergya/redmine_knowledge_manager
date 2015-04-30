@@ -1,0 +1,1 @@
+gem 'rails3-jquery-autocomplete'

@@ -1,2 +1,2 @@
-# redmine_knowledge_manager
+# Redmine Knowledge Manager
 Redmine plugin to store and manage users' knowledge
