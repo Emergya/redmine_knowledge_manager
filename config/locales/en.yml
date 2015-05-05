@@ -10,6 +10,10 @@ en:
     label_name: Name
     label_main: Main
 
+    label_low: Low
+    label_intermediate: Intermediate
+    label_high: High
+
     title_options: Options
     label_show_alert: Show users alert
 

@@ -12,6 +12,17 @@ class UserKnowledge < ActiveRecord::Base
   	self.knowledge.name
   end
 
+  def level_name
+    case (self.level)
+    when 0
+      l(:'km.label_low')
+    when 1
+      l(:'km.label_intermediate')      
+    when 2
+      l(:'km.label_high')
+    end
+  end
+
   def get_error_message
     error_msg = ""
     

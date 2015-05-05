@@ -55,7 +55,7 @@
   	  <% @user.user_knowledges.each do |knowledge| %>
   	  	<tr class="<%= 'main_knowledge' if knowledge.knowledge.main.present? %>">
           <td><%= knowledge.knowledge.name %></td>
-          <td><%= knowledge.level %></td>
+          <td><%= knowledge.level_name %></td>
           <td><%= link_to l(:button_delete), {:controller => 'user_knowledges', :id => knowledge.id, :action => 'destroy'}, :method => :delete, :data => {:confirm => l(:text_are_you_sure)}, :class => 'icon icon-del' %></td>
         </tr>
   	  <% end %>

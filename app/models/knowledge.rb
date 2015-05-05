@@ -17,11 +17,11 @@ class Knowledge < ActiveRecord::Base
       not_allowed = knowledges.collect{|k| k.id} if knowledges.present?
   	end
 
-  	Knowledge.where("id NOT IN (?)",not_allowed).collect{|k| [k.name, k.id, k.main.present? ? {style: 'color:red'} : {style: 'color:black'}]}
+  	Knowledge.where("id NOT IN (?)",not_allowed).order('name').collect{|k| [k.name, k.id, k.main.present? ? {style: 'color:red'} : {style: 'color:black'}]}
   end
 
   def self.level_options
-  	(1..3).to_a
+  	[[l(:'km.label_low'), 0],[l(:'km.label_intermediate'), 1],[l(:'km.label_high'), 2]]
   end
 
   def get_error_message
