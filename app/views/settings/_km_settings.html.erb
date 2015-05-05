@@ -1,0 +1,10 @@
+<div>
+	<fieldset>
+		<legend><%=l(:"cpm.title_options")%></legend>
+		<p>
+	    <label><%=l(:"cpm.label_show_alert")%></label>
+	        <%= check_box_tag 'settings[show_alert]', true, @settings['show_alert'].present? %>
+		</p>
+	</fieldset>
+</div>
+<div style="clear: both;"></div>

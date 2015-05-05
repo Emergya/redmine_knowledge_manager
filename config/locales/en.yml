@@ -9,3 +9,8 @@ en:
     label_knowledge_management: Knowledge management
     label_name: Name
     label_main: Main
+
+    title_options: Options
+    label_show_alert: Show users alert
+
+    text_main_knowledges_alert: You have no main knowledges registered at this moment. Please, go to 'Knowledges' option in top menu and add at least one main knowledge for your profile.

@@ -21,7 +21,9 @@ module KM
     end
 
     module InstanceMethods
-      
+      def main_knowledges
+        self.knowledges.select{|k| k.main.present?}
+      end
     end
   end
 end

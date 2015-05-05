@@ -9,3 +9,8 @@ es:
     label_knowledge_management: Gestión de conocimientos
     label_name: Nombre
     label_main: Principal
+
+    title_options: Opciones
+    label_show_alert: Mostrar alerta a usuarios
+
+    text_main_knowledges_alert: No ha registrado aún ningún conocimiento principal. Por favor, accede a la sección 'Conocimientos' del menú superior e introduce algún conocimiento principal en tu perfil.
