@@ -17,7 +17,13 @@ module KM
     end
 
     module ClassMethods
-      
+      # Get users with specified knowledges
+      def with_knowledges(knowledges)
+        # AND
+        #includes(:user_knowledges).where("user_knowledges.knowledge_id IN (?)", knowledges).having("COUNT(*) >= ?",knowledges.length)
+        # OR
+        includes(:user_knowledges).where("user_knowledges.knowledge_id IN (?)", knowledges)
+      end
     end
 
     module InstanceMethods
