@@ -41,7 +41,8 @@
   end
 
   def destroy
-    knowledge = Knowledge.find(params[:id])
+    data = params[:knowledge]
+    knowledge = Knowledge.find(data[:id])
 
     if knowledge.destroy
       flash[:notice] = l(:notice_successful_delete)

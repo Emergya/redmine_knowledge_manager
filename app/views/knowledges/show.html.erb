@@ -4,8 +4,8 @@
 
 <h2><%= l('km.label_knowledges') %></h2>
 
-<%= form_for :knowledge, url: {controller: "knowledges", action: "edit"}, method: 'get' do |f| %>
-	<fieldset class="box tabular">
+<fieldset class="box tabular">
+	<%= form_for :knowledge, url: {controller: "knowledges", action: "edit"}, method: 'get' do |f| %>
 		<div class="splitcontentleft">
 			<p>
 		    <%= f.label :id, l('km.label_knowledges') %>
@@ -23,8 +23,14 @@
 			</p>
 			<p><%= f.submit l(:button_edit) %></p>
 		</div>
-	</fieldset>
-<% end %>
+	<% end %>
+	<div class="splitcontentright">
+		<%= form_for :knowledge, url: {controller: "knowledges", action: "destroy"}, method: 'get', id: 'delete_knowledge' do |f| %>
+			<%= f.hidden_field :id, id: 'knowledge_id_delete' %>
+			<p><%= f.submit l(:button_delete), :data => {:confirm => l(:text_are_you_sure)} %></p>
+		<% end %>
+	</div>
+</fieldset>
 <br>
 <%= form_for :knowledge, url: {controller: "knowledges", action: "new"}, method: 'get' do |f| %>
 	<fieldset class="box tabular">
