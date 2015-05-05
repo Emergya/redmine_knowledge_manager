@@ -2,6 +2,7 @@
 en:
   km:
     label_knowledges: Knowledges
+    label_main_knowledges: Main knowledges
     label_add_knowledge: Add knowledge
     label_knowledge: Knowledge
     label_level: Level

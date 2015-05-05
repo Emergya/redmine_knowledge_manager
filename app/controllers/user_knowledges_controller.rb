@@ -6,6 +6,7 @@
   
   def show
     @user = User.current
+    @main_knowledges = Knowledge.main_options
   end
 
   def new

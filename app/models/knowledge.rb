@@ -3,6 +3,12 @@ class Knowledge < ActiveRecord::Base
 
   has_many :user_knowledge
 
+  validates :name, presence: true, uniqueness: true
+
+  def self.main_options
+    Knowledge.where("main > 0").order('name').collect{|k| [k.name, k.id]}
+  end
+
   def self.name_options(user = nil)
     not_allowed = [0]
 

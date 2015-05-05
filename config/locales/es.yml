@@ -2,6 +2,7 @@
 es:
   km:
     label_knowledges: Conocimientos
+    label_main_knowledges: Conocimientos principales
     label_add_knowledge: Añadir conocimiento
     label_knowledge: Conocimiento
     label_level: Nivel

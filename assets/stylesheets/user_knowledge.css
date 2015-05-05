@@ -1,0 +1,11 @@
+.main_knowledge{
+	background-color:#FE8;
+}
+
+table.list.issues tr.main_knowledge:hover{
+	background-color:#FE8;
+}
+
+table.list.issues tr:hover{
+	background-color:inherit;
+}

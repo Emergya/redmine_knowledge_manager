@@ -1,11 +1,30 @@
 <% content_for :header_tags do %>
   <%= javascript_include_tag "user_knowledge.js", :plugin => 'redmine_knowledge_manager' %>
   <%= javascript_include_tag "autocomplete-rails.js", :plugin => 'redmine_knowledge_manager' %>
+  <%= stylesheet_link_tag "user_knowledge.css", :plugin => 'redmine_knowledge_manager' %>
 <% end %>
 
 <h2><%= l('km.label_knowledges') %></h2>
 
 <div class="splitcontentleft">
+  <% if @main_knowledges.present? %>
+    <%= form_for :user_knowledge, url: {controller: "user_knowledges", action: "new"}, method: 'get' do |f| %>
+      <fieldset class="box tabular" style="margin-right:10px">
+        <legend><%= l('km.label_main_knowledges') %></legend>
+        <%= f.hidden_field :user_id, :value => @user.id %>
+        <p>
+          <%= f.label :knowledge_id, l('km.label_knowledge') %>
+          <%= f.select :knowledge_id, options_for_select(@main_knowledges, disabled: @user.knowledges.collect{|k| k.id}) %>
+        </p>
+        <p>
+          <%= f.label :level, l('km.label_level') %>
+          <%= f.select :level, options_for_select(Knowledge.level_options) %>
+        </p>
+      </fieldset>
+      <div><%= f.submit l(:button_submit) %></div>
+    <% end %>
+  <% end %>
+
 	<%= form_for :user_knowledge, url: {controller: "user_knowledges", action: "new"}, method: 'get' do |f| %>
     <fieldset class="box tabular" style="margin-right:10px">
       <legend><%= l('km.label_add_knowledge') %></legend>
@@ -34,7 +53,7 @@
         <th></th>
       <tr/>
   	  <% @user.user_knowledges.each do |knowledge| %>
-  	  	<tr>
+  	  	<tr class="<%= 'main_knowledge' if knowledge.knowledge.main.present? %>">
           <td><%= knowledge.knowledge.name %></td>
           <td><%= knowledge.level %></td>
           <td><%= link_to l(:button_delete), {:controller => 'user_knowledges', :id => knowledge.id, :action => 'destroy'}, :method => :delete, :data => {:confirm => l(:text_are_you_sure)}, :class => 'icon icon-del' %></td>
