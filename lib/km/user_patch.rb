@@ -18,11 +18,12 @@ module KM
 
     module ClassMethods
       # Get users with specified knowledges
-      def with_knowledges(knowledges)
+      def with_knowledges(knowledges,users)
+        users = allowed.collect{|u| u.id} if users.empty?
         # AND
         #includes(:user_knowledges).where("user_knowledges.knowledge_id IN (?)", knowledges).having("COUNT(*) >= ?",knowledges.length)
         # OR
-        includes(:user_knowledges).where("user_knowledges.knowledge_id IN (?)", knowledges)
+        includes(:user_knowledges).where("user_knowledges.knowledge_id IN (?) AND users.id IN (?)", knowledges, users)
       end
     end
 
