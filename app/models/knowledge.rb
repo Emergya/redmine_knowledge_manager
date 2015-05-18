@@ -1,7 +1,7 @@
 class Knowledge < ActiveRecord::Base
   unloadable
 
-  has_many :user_knowledge
+  has_many :user_knowledge, :dependent => :destroy
 
   validates :name, presence: true, uniqueness: true
 
