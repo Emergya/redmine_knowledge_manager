@@ -1,5 +1,7 @@
 # English strings go here for Rails i18n
 en:
+  permission_km_user_knowledges: Knowledge record
+
   km:
     label_knowledges: Knowledges
     label_main_knowledges: Main knowledges

@@ -1,5 +1,7 @@
 # Spanish strings go here for Rails i18n
 es:
+  permission_km_user_knowledges: Registro de conocimientos
+
   km:
     label_knowledges: Conocimientos
     label_main_knowledges: Conocimientos principales
