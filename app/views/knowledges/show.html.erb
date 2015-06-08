@@ -1,47 +1,52 @@
 <% content_for :header_tags do %>
   <%= javascript_include_tag "knowledge.js", :plugin => 'redmine_knowledge_manager' %>
+  <%= stylesheet_link_tag "user_knowledge.css", :plugin => 'redmine_knowledge_manager' %>
 <% end %>
 
-<h2><%= l('km.label_knowledges') %></h2>
-
-<fieldset class="box tabular">
-	<%= form_for :knowledge, url: {controller: "knowledges", action: "edit"}, method: 'get' do |f| %>
-		<div class="splitcontentleft">
-			<p>
-		    <%= f.label :id, l('km.label_knowledges') %>
-				<%= f.select :id, options_for_select(@knowledges), {}, {:size => 10} %>
-			</p>
-		</div>
-		<div class="splitcontentright" >
-			<p>
-		    <%= f.label :name, l('km.label_name') %>
-				<%= f.text_field :name %>
-			</p>
-			<p>
-		    <%= f.label :main, l('km.label_main') %>
-				<%= f.check_box :main %>
-			</p>
-			<p><%= f.submit l(:button_edit) %></p>
-		</div>
-	<% end %>
-	<div class="splitcontentright">
-		<%= form_for :knowledge, url: {controller: "knowledges", action: "destroy"}, method: 'get', id: 'delete_knowledge' do |f| %>
-			<%= f.hidden_field :id, id: 'knowledge_id_delete' %>
-			<p><%= f.submit l(:button_delete), :data => {:confirm => l(:text_are_you_sure)} %></p>
-		<% end %>
-	</div>
-</fieldset>
-<br>
+<h2><%= l('km.label_knowledge_management') %></h2>
 <%= form_for :knowledge, url: {controller: "knowledges", action: "new"}, method: 'get' do |f| %>
 	<fieldset class="box tabular">
+		<legend><%= l('km.label_add_knowledge') %></legend>
 		<p>
 		  <%= f.label :name, l('km.label_name') %>
-			<%= f.text_field :name %>
+			<%= f.text_field :name, {:id => 'knowledge_name_create'} %>
 		</p>
 		<p>
 		  <%= f.label :main, l('km.label_main') %>
-			<%= f.check_box :main %>
+			<%= f.check_box :main, {:id => 'knowledge_main_create'} %>
 		</p>
 	</fieldset>
 	<div><%= f.submit l(:button_add) %></div>
+<% end %>
+
+<br>
+
+<%= form_for :knowledge, url: {controller: "knowledges", action: "edit"}, method: 'get' do |f| %>
+	<fieldset class="box tabular">
+		<legend><%= l('km.label_edit_knowledge') %></legend>
+		<div class="splitcontentright">
+			<%= render :partial => 'legend' %>
+		</div>
+		<div class="splitcontenleft">
+			<p>
+			 <%= f.label :id, l('km.label_knowledges') %>
+				<%= f.select :id, options_for_select(@knowledges), {}, {:size => 10} %>
+			</p>
+			<br>
+			<p>
+			 <%= f.label :name, l('km.label_name') %>
+				<%= f.text_field :name %>
+			</p>
+			<p>
+			 <%= f.label :main, l('km.label_main') %>
+				<%= f.check_box :main %>
+			</p>
+		</div>
+		
+	</fieldset>
+	<%= f.submit l(:button_edit) %>
+<% end %>
+<%= form_for :knowledge, url: {controller: "knowledges", action: "destroy"}, method: 'get', id: 'delete_knowledge' do |f| %>
+	<%= f.hidden_field :id, id: 'knowledge_id_delete' %>
+	<%= f.submit l(:button_delete), :data => {:confirm => l(:text_are_you_sure)} %>
 <% end %>

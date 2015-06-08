@@ -5,47 +5,50 @@
 <% end %>
 
 <h2><%= l('km.label_knowledges') %></h2>
-
 <div class="splitcontentleft">
-  <% if @main_knowledges.present? %>
-    <%= form_for :user_knowledge, url: {controller: "user_knowledges", action: "new"}, method: 'get' do |f| %>
+  <fieldset>
+    <legend><%= l('km.label_add_knowledge') %></legend>
+    <% if @main_knowledges.present? %>
+      <%= form_for :user_knowledge, url: {controller: "user_knowledges", action: "new"}, method: 'get' do |f| %>
+        <fieldset class="box tabular" style="margin-right:10px">
+          <legend><%= l('km.label_main_knowledges') %></legend>
+          <%= f.hidden_field :user_id, :value => @user.id %>
+          <p>
+            <%= f.label :knowledge_id, l('km.label_knowledge') %>
+            <%= f.select :knowledge_id, options_for_select(@main_knowledges, disabled: @user.knowledges.collect{|k| k.id}) %>
+          </p>
+          <p>
+            <%= f.label :level, l('km.label_level') %>
+            <%= f.select :level, options_for_select(Knowledge.level_options) %>
+          </p>
+        </fieldset>
+        <div><%= f.submit l(:button_add) %></div>
+      <% end %>
+    <% end %>
+    <br>
+  	<%= form_for :user_knowledge, url: {controller: "user_knowledges", action: "new"}, method: 'get' do |f| %>
       <fieldset class="box tabular" style="margin-right:10px">
-        <legend><%= l('km.label_main_knowledges') %></legend>
+        <legend><%= l('km.label_other_knowledges') %></legend>
         <%= f.hidden_field :user_id, :value => @user.id %>
         <p>
           <%= f.label :knowledge_id, l('km.label_knowledge') %>
-          <%= f.select :knowledge_id, options_for_select(@main_knowledges, disabled: @user.knowledges.collect{|k| k.id}) %>
+          <%= f.autocomplete_field :name, :autocomplete_knowledge_name %>
+          <%= f.hidden_field :knowledge_id  %>
         </p>
         <p>
           <%= f.label :level, l('km.label_level') %>
           <%= f.select :level, options_for_select(Knowledge.level_options) %>
         </p>
       </fieldset>
-      <div><%= f.submit l(:button_submit) %></div>
+      <div><%= f.submit l(:button_add) %></div>
     <% end %>
-  <% end %>
-
-	<%= form_for :user_knowledge, url: {controller: "user_knowledges", action: "new"}, method: 'get' do |f| %>
-    <fieldset class="box tabular" style="margin-right:10px">
-      <legend><%= l('km.label_add_knowledge') %></legend>
-      <%= f.hidden_field :user_id, :value => @user.id %>
-      <p>
-        <%= f.label :knowledge_id, l('km.label_knowledge') %>
-        <%= f.autocomplete_field :name, :autocomplete_knowledge_name %>
-        <%= f.hidden_field :knowledge_id  %>
-      </p>
-      <p>
-        <%= f.label :level, l('km.label_level') %>
-        <%= f.select :level, options_for_select(Knowledge.level_options) %>
-      </p>
-    </fieldset>
-    <div><%= f.submit l(:button_submit) %></div>
-  <% end %>
+  </fieldset>
 </div>
 
-<div class="splitcontentleft">
+
+<div class="splitcontentright">
   <fieldset class="box tabular" style="margin-left:10px">
-    <legend>Conocimientos</legend>
+    <legend><%= l('km.label_knowledges') %></legend>
     <table class="list issues">
       <tr>
         <th><%= l('km.label_knowledge') %></th>
@@ -60,5 +63,7 @@
         </tr>
   	  <% end %>
   	</table>
+
+    <%= render :partial => 'knowledges/legend' %>
   </fieldset>
 </div>

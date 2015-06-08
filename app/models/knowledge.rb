@@ -17,7 +17,7 @@ class Knowledge < ActiveRecord::Base
       not_allowed = knowledges.collect{|k| k.id} if knowledges.present?
   	end
 
-  	Knowledge.where("id NOT IN (?)",not_allowed).order('name').collect{|k| [k.name, k.id, k.main.present? ? {style: 'color:red'} : {style: 'color:black'}]}
+  	Knowledge.where("id NOT IN (?)",not_allowed).order('name').collect{|k| [k.name, k.id, k.main.present? ? {class: 'main_knowledge'} : {}]}
   end
 
   def self.level_options

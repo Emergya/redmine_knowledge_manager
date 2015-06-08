@@ -1,0 +1,39 @@
+.main_knowledge{
+	background-color:#FE8;
+}
+
+.main_knowledge.selected{
+	background-color:#FE8;
+}
+
+.other_knowledge{
+	background-color:white;
+}
+
+#knowledge_legend {
+	margin-top: 5px;
+}
+
+.legend {
+	border: 1px solid black;
+	display: inline-flex;
+	height: 10px;
+	margin-right: 5px;
+	width: 10px;
+}
+
+.filter {
+	display:inline-block;
+	/*margin-right: 50px;*/
+	margin-right: 80px;
+	vertical-align: top;
+}
+
+.filter_name {
+/*	display:inline-block;
+	width:100px;*/
+}
+
+.filter_options {
+	display: inline-table;
+}

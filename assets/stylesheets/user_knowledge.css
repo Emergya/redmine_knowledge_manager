@@ -2,10 +2,22 @@
 	background-color:#FE8;
 }
 
+.other_knowledge{
+	background-color:white;
+}
+
 table.list.issues tr.main_knowledge:hover{
 	background-color:#FE8;
 }
 
 table.list.issues tr:hover{
 	background-color:inherit;
+}
+
+.legend {
+	border: 1px solid black;
+	display: inline-flex;
+	height: 10px;
+	margin-right: 5px;
+	width: 10px;
 }

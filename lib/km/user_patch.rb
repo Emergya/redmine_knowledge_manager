@@ -31,6 +31,10 @@ module KM
       def main_knowledges
         self.knowledges.select{|k| k.main.present?}
       end
+
+      def other_knowledges
+        self.knowledges.reject{|k| k.main.present?}
+      end
     end
   end
 end

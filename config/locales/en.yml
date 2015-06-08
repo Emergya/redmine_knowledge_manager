@@ -1,20 +1,28 @@
 # English strings go here for Rails i18n
 en:
   permission_km_user_knowledges: Knowledge record
+  permission_km_knowledge_search: Knowledge search
 
   km:
+    label_knowledge_management: Knowledge management
+    label_knowledge_search: Knowledge search
+    label_knowledge: Knowledge
     label_knowledges: Knowledges
     label_main_knowledges: Main knowledges
+    label_other_knowledges: Other knowledges
     label_add_knowledge: Add knowledge
-    label_knowledge: Knowledge
+    label_edit_knowledge: Edit knowledge
     label_level: Level
-    label_knowledge_management: Knowledge management
     label_name: Name
     label_main: Main
 
-    label_low: Low
-    label_intermediate: Intermediate
-    label_high: High
+    laberl_search: Search
+
+    label_low: "Low: basic notions"
+    label_intermediate: "Intermediate: ocassional use"
+    label_high: "High: daily use"
+
+    text_results_not_found: Results not found
 
     title_options: Options
     label_show_alert: Show users alert

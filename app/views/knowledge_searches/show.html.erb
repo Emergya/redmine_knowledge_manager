@@ -1,0 +1,50 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag "knowledge_search.css", :plugin => 'redmine_knowledge_manager' %>
+<% end %>
+
+<h2><%= l("km.label_knowledge_search") %></h2>
+
+<%= form_tag({:action => 'show'}) do %>
+<div class="filter">
+		<span class="filter_name"><h4><%=l(:"label_user_plural")%></h4></span>
+		<div class="filter_options">
+			<%= select_tag 'users[]', options_for_select(@users_options, selected: @users_selected), multiple: true, size: 10, style: 'width:180px' %>
+    	</div>
+</div>
+<div class="filter">
+		<span class="filter_name"><h4><%=l(:"km.label_knowledges")%></h4></span>
+		<div class="filter_options">
+			<%= select_tag 'knowledges[]', options_for_select(@knowledges_options, selected: @knowledges_selected), multiple: true, size: 8, style: 'width:180px' %>
+    		<%= render :partial => 'knowledges/legend' %>
+    	</div>
+</div>
+<p>
+	<%= submit_tag l(:"km.laberl_search") %>
+</p>
+<% end %>
+
+<br>
+<% if params[:commit].present? %>
+	<% if @users.present? %>
+		<table class="list issues" >
+			<thead>
+				<tr>
+					<th><%=l(:"label_user")%></th>
+					<th><%=l(:"km.label_main_knowledges")%></th>
+					<th><%=l(:"km.label_other_knowledges")%></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @users.each do |user| %>
+					<tr>
+						<td><%= user.login+" ("+user.name+")" %></td>
+						<td><%= highlight(user.main_knowledges, @knowledges_selected) %></td>
+						<td><%= highlight(user.other_knowledges, @knowledges_selected) %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% else %>
+		<div style="text-align:center"><%=l(:"km.text_results_not_found")%></div>
+	<% end %>
+<% end %>
