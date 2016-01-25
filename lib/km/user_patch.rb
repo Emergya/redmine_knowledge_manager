@@ -12,7 +12,7 @@ module KM
         unloadable # Send unloadable so it will be reloaded in development
 
         has_many :user_knowledges, :dependent => :destroy
-        has_many :knowledges, :through => :user_knowledges, :uniq => true
+        has_many :knowledges, -> {distinct}, :through => :user_knowledges
       end
     end
 

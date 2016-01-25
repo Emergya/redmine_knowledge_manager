@@ -5,7 +5,7 @@ Redmine::Plugin.register :redmine_knowledge_manager do
   name 'Knowledge Manager'
   author 'jresinas'
   description "This plugin allows to store and manage users' knowledge."
-  version '0.0.1'
+  version '0.0.2'
 
   permission :km_user_knowledges, { :user_knowledges => [:show] }, :require => :loggedin
 	permission :km_knowledge_search, { :knowledge_searches => [:show] }, :require => :loggedin

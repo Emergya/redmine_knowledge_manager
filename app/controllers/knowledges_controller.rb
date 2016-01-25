@@ -6,9 +6,7 @@
   end
 
   def new
-    data = params[:knowledge]
-
-    @knowledge = Knowledge.new(data)
+    @knowledge = Knowledge.new knowledge_params
 
     if @knowledge.save
       flash[:notice] = l(:notice_successful_create)
@@ -23,7 +21,7 @@
     data = params[:knowledge]
     knowledge = Knowledge.find(data[:id])
 
-    if knowledge.update_attributes(data)
+    if knowledge.update_attributes knowledge_params
       flash[:notice] = l(:notice_successful_update)
     else
       error_msg = ""
@@ -67,5 +65,10 @@
     if request.xhr?
       render :json => knowledge
     end
+  end
+
+  private
+  def knowledge_params
+    params.require(:knowledge).permit(:name, :main)
   end
 end

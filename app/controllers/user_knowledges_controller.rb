@@ -24,8 +24,7 @@
       end
     end
 
-    @user_knowledge = UserKnowledge.new(data)
-
+    @user_knowledge = UserKnowledge.new user_knowledge_params
     if @user_knowledge.save
       flash[:notice] = l(:notice_successful_create)
     else
@@ -53,5 +52,10 @@
     end
 
     redirect_to request.referrer
+  end
+
+  private
+  def user_knowledge_params
+    params.require(:user_knowledge).permit(:user_id, :knowledge_id, :level, knowledge_attributes: [:name, :main])
   end
 end

@@ -4,7 +4,7 @@ $(document).ready(function(){
 	  	url: '/knowledges/get_data',
 	  	data: {id: $('#knowledge_id').val()},
 		success: function(data){
-			knowledge = data['knowledge'];
+			knowledge = data
 
 			$('#knowledge_name').val(knowledge['name']);
 			
