@@ -23,7 +23,7 @@ module KM
         # AND
         #includes(:user_knowledges).where("user_knowledges.knowledge_id IN (?)", knowledges).having("COUNT(*) >= ?",knowledges.length)
         # OR
-        includes(:user_knowledges).where("user_knowledges.knowledge_id IN (?) AND users.id IN (?)", knowledges, users)
+        joins(:user_knowledges).where("user_knowledges.knowledge_id IN (?) AND users.id IN (?)", knowledges, users)
       end
     end
 
